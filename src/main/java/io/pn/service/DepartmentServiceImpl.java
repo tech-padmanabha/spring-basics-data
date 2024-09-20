@@ -1,5 +1,6 @@
 package io.pn.service;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -28,5 +29,11 @@ public class DepartmentServiceImpl {
 		
 		return deptDto;
 	}
-	
+
+	public List<DepartmentDto> searchByLocation(String location){
+		List<Department> department = deptRepo.searchByLocation(location);
+		List<DepartmentDto> deptDto = new ArrayList<>();
+		department.forEach(dept -> deptDto.add(DataUtils.convertToDtoDepartment(dept)));
+		return deptDto;
+	}
 }

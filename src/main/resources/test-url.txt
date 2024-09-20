@@ -1,0 +1,12 @@
+for grater then provide salary "http://localhost:9985/emp/get-by-sal/2000"
+
+http://localhost:9985/emp/search-j-h?job=MANAGER&hireDate=1981-04-02
+http://localhost:9985/emp/search-n?name=allen
+http://localhost:9985/emp/search-s-e?start=1981-04-02&end=1981-11-17
+http://localhost:9985/emp/remove-by-sal/800  // it'll remove the department if not required
+http://localhost:9985/emp/exists/SCOTT
+http://localhost:9985/emp/remove-by-name/SCOTT
+http://localhost:9985/emp/search-j?job=MANAGER
+http://localhost:9985/emp/count-j?job=SALESMAN
+http://localhost:9985/emp
+http://localhost:9985/emp

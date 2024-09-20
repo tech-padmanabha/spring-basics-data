@@ -30,4 +30,19 @@ public class DataUtils {
 		
 		return deptDto;
 	}
+	
+	public static DepartmentDto convertToOnlyDtoDepartment(Department dept) {
+		DepartmentDto dto = new DepartmentDto(dept.getDepartmentNo(), dept.getDepartmentName(), dept.getLocation(), null);
+		return dto;
+	}
+	
+	public static EmployeeDto convertToDtoEmployees(Employee x) {
+				
+		EmployeeDto empDto = new EmployeeDto(x.getEmpId(), 
+				x.getEmpName(), x.getJob(), x.getManager(), 
+				x.getHireDate(),x.getSalary(), x.getCommission(),
+				convertToOnlyDtoDepartment(x.getDepartment()));
+		return empDto;
+	}
+	
 }
