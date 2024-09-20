@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.pn.dto.DepartmentDto;
-import io.pn.service.DepartmentServiceImpl;
+import io.pn.service.DepartmentService;
 
 @RestController
 @RequestMapping("/dept")
 public class DepartmentController {
 	
 	@Autowired
-	DepartmentServiceImpl service;
+	private DepartmentService service;
 	
 	@GetMapping("/get-all")
 	public Set<DepartmentDto> getDepartment(){

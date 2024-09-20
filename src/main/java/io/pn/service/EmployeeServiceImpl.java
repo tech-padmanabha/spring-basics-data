@@ -15,7 +15,7 @@ import io.pn.util.DataUtils;
 import jakarta.transaction.Transactional;
 
 @Service
-public class EmployeeServiceImpl {
+public class EmployeeServiceImpl implements EmployeeService{
 
 	@Autowired
 	private EmployeeRepository empRepo;
@@ -52,7 +52,7 @@ public class EmployeeServiceImpl {
 	public List<EmployeeDto> searchByEmpNameLikeAllIgnoreCase(String name) {
 		List<EmployeeDto> empDto = new ArrayList<>();
 		var employees = empRepo.searchByEmpNameLikeAllIgnoreCase(name);
-	    employees.forEach(emp -> empDto.add(DataUtils.convertToDtoEmployees(emp)));
+		employees.forEach(emp -> empDto.add(DataUtils.convertToDtoEmployees(emp)));
 		return empDto;
 	}
 
@@ -62,7 +62,7 @@ public class EmployeeServiceImpl {
 		employees.forEach(emp -> empDto.add(DataUtils.convertToDtoEmployees(emp)));
 		return empDto;
 	}
-	
+
 	@Transactional
 	public void removeBySalaryLessThanEqual(BigDecimal sal) {
 		empRepo.removeBySalaryLessThanEqual(sal);
@@ -71,6 +71,7 @@ public class EmployeeServiceImpl {
 	public boolean existsByEmpName(String empName) {
 		return empRepo.existsByEmpName(empName);
 	}
+
 	@Transactional
 	public void deleteByEmpName(String empName) {
 		empRepo.deleteByEmpName(empName);
@@ -86,4 +87,6 @@ public class EmployeeServiceImpl {
 	public long countByJob(String job) {
 		return empRepo.countByJob(job);
 	}
+
+	
 }

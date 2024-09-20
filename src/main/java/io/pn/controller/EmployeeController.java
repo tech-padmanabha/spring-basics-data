@@ -13,14 +13,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.pn.dto.EmployeeDto;
-import io.pn.service.EmployeeServiceImpl;
+import io.pn.service.EmployeeService;
 
 @RestController
 @RequestMapping("/emp")
 public class EmployeeController {
 	
 	@Autowired
-	private EmployeeServiceImpl empService;
+	private EmployeeService empService;
 	
 	@GetMapping("/get-all")
 	public List<EmployeeDto> getAllEmployees(){
@@ -41,11 +41,13 @@ public class EmployeeController {
 	public List<EmployeeDto> searchByJobAndHireDate(@RequestParam String job,@RequestParam LocalDate hireDate){
 		return empService.searchByJobAndHireDate(job, hireDate);
 	}
+	
 	@GetMapping("/search-n")
 	public List<EmployeeDto> searchByEmpNameLikeAllIgnoreCase(@RequestParam String name){
 		
 		return empService.searchByEmpNameLikeAllIgnoreCase(name);
 	}
+	
 	@GetMapping("/search-s-e")
 	public List<EmployeeDto> searchByHireDateBetween(@RequestParam LocalDate start,@RequestParam LocalDate end){
 		
@@ -78,4 +80,6 @@ public class EmployeeController {
 	public long countByJob(@RequestParam String job) {
 		return empService.countByJob(job);
 	}
+	
+	
 }

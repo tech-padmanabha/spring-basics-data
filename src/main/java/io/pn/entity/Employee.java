@@ -52,7 +52,7 @@ public class Employee {
 	@JoinColumn(name = "deptno")
 	private Department department;
 
-	protected Employee() {
+	public Employee() {
 		
 	}
 }

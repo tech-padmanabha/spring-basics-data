@@ -1,5 +1,6 @@
 package io.pn.repository;
 
+import org.springframework.data.domain.Example;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -31,6 +32,7 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 	List<Employee> searchByEmpNameLikeAllIgnoreCase(String name);
 	
 	List<Employee> searchByJobAndHireDate(String job, LocalDate hireDate);
+	
 	
 }
 

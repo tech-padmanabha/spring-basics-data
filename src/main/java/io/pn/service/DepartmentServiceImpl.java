@@ -14,7 +14,7 @@ import io.pn.repository.DepartmentRepository;
 import io.pn.util.DataUtils;
 
 @Service
-public class DepartmentServiceImpl {
+public class DepartmentServiceImpl implements DepartmentService{
 	
 	@Autowired
 	DepartmentRepository deptRepo;
