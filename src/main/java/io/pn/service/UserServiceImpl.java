@@ -12,7 +12,7 @@ import io.pn.entity.Users;
 import io.pn.repository.UsersRepository;
 
 @Service
-public class UserServiceImpl {
+public class UserServiceImpl implements UserService{
 	
 	@Autowired
 	private UsersRepository usersRepo;

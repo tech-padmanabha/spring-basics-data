@@ -9,18 +9,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.pn.dto.UserRequestDto;
 import io.pn.dto.UsersResponseDto;
-import io.pn.service.UserServiceImpl;
+import io.pn.service.UserService;
 
 @RestController
 public class UsersController {
 
 	@Autowired
-	private UserServiceImpl userService;
+	private UserService userService;
 	
 	@PostMapping("/store")
 	public UsersResponseDto saveUser(@RequestBody UserRequestDto users) {
 		return userService.saveUsers(users);
 	}
+	
 	@GetMapping("/get")
 	public UsersResponseDto findById(@RequestParam String id) {
 		
