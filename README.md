@@ -37,9 +37,9 @@ public class Department {
 ```
 
 + Here in Column we provided name and the length
-+ In @OneToMany jpa default <fetch = FetchType.LAZY> is LAZY so we will not touch it.
-+ Where we are going to mapping/releating the data we are providing <mappedBy = "department"> with the appropriate defined name.
-+ What are the operations`(CRUD)` we can do over the releative table those information we need to provide at <cascade = CascadeType.ALL>.
++ In @OneToMany jpa default `fetch = FetchType.LAZY` is LAZY so we will not touch it.
++ Where we are going to mapping/releating the data we are providing `mappedBy = "department"` with the appropriate defined name.
++ What are the operations`(CRUD)` we can do over the releative table those information we need to provide at `cascade = CascadeType.ALL`.
 
 > In Other side you need to Handle it.
 
@@ -88,7 +88,7 @@ public class Employee {
 ```
 
 Here Basic information we need to provide.
-+ Provide the join Column Name <JoinColumn>.
++ Provide the join Column Name `@JoinColumn`.
 + With that we can provide the what are the operations we can do in
 bidirectional relationship between them.
 
