@@ -94,6 +94,9 @@ bidirectional relationship between them.
 
 > [!CAUTION]
 > At the time of finding the all data or releative data there are change of recursive infinite data occures while loading.
+
+Fallow the Notes
+> 
 > [!NOTE]
 > To Handle the recursive infinite data problemes here we can use Dto class, we can stop where the recurssion happens.
 
