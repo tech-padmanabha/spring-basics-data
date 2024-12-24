@@ -1,20 +1,21 @@
-package io.pn.service;
+package io.pn.service.impls;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import io.pn.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import io.pn.dto.DepartmentDto;
 import io.pn.entity.Department;
 import io.pn.repository.DepartmentRepository;
-import io.pn.util.DataUtils;
+import io.pn.mapper.EmployeeDepartmentMapper;
 
 @Service
-public class DepartmentServiceImpl implements DepartmentService{
+public class DepartmentServiceImpl implements DepartmentService {
 	
 	@Autowired
 	DepartmentRepository deptRepo;
@@ -24,7 +25,7 @@ public class DepartmentServiceImpl implements DepartmentService{
 		List<Department> all = deptRepo.findAll();
 		Set<DepartmentDto> deptDto = new HashSet<>();	
 		for(Department dept: all) {
-			deptDto.add(DataUtils.convertToDtoDepartment(dept));
+			deptDto.add(EmployeeDepartmentMapper.convertToDtoDepartment(dept));
 		}		
 		
 		return deptDto;
@@ -33,7 +34,7 @@ public class DepartmentServiceImpl implements DepartmentService{
 	public List<DepartmentDto> searchByLocation(String location){
 		List<Department> department = deptRepo.searchByLocation(location);
 		List<DepartmentDto> deptDto = new ArrayList<>();
-		department.forEach(dept -> deptDto.add(DataUtils.convertToDtoDepartment(dept)));
+		department.forEach(dept -> deptDto.add(EmployeeDepartmentMapper.convertToDtoDepartment(dept)));
 		return deptDto;
 	}
 }

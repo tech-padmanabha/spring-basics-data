@@ -1,4 +1,4 @@
-package io.pn;
+package io.pn.configurations;
 
 import java.util.Optional;
 

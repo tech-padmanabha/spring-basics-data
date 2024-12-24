@@ -7,6 +7,7 @@ import java.util.List;
 import io.pn.dto.EmployeeDto;
 
 public interface EmployeeService {
+	public EmployeeDto getEmployeeById(Integer empNo);
 	List<EmployeeDto> getAllEmployees();
 	List<EmployeeDto> getEmployeesByName(String name);
 	List<EmployeeDto> getEmployeesBySalaryRange(BigDecimal salary);

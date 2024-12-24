@@ -1,5 +1,6 @@
 package io.pn.repository;
 
+import io.pn.dto.EmployeeDto;
 import org.springframework.data.domain.Example;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -9,9 +10,12 @@ import io.pn.entity.Employee;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
+
+	Optional<Employee> getByEmpId(Integer integer);
 
 	List<Employee> getByEmpName(String empName);
 
