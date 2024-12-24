@@ -1,4 +1,4 @@
-package io.pn.util;
+package io.pn.mapper;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -8,7 +8,7 @@ import io.pn.dto.EmployeeDto;
 import io.pn.entity.Department;
 import io.pn.entity.Employee;
 
-public class DataUtils {
+public class EmployeeDepartmentMapper {
 
 	public static EmployeeDto convertToDtoEmployee(Employee x) {
 		

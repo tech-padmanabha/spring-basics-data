@@ -1,8 +1,9 @@
-package io.pn.service;
+package io.pn.service.impls;
 
 import java.util.Optional;
 import java.util.UUID;
 
+import io.pn.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +13,7 @@ import io.pn.entity.Users;
 import io.pn.repository.UsersRepository;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	private UsersRepository usersRepo;

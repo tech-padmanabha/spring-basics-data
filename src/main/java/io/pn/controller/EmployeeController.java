@@ -4,24 +4,29 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import io.pn.dto.EmployeeDto;
 import io.pn.service.EmployeeService;
 
+@AllArgsConstructor
 @RestController
 @RequestMapping("/emp")
+@CrossOrigin("*")
 public class EmployeeController {
 	
-	@Autowired
+	//@Autowired
+	// if we use @AllArgsConstructor then we no need to autowired
 	private EmployeeService empService;
-	
+
+	@GetMapping(path = "{empNo}")
+	public ResponseEntity<EmployeeDto> searchEmployeeByEmpno(@PathVariable Integer empNo){
+		var employee = empService.getEmployeeById(empNo);
+		return ResponseEntity.ok(employee);
+	}
 	@GetMapping("/get-all")
 	public List<EmployeeDto> getAllEmployees(){
 		return empService.getAllEmployees();
