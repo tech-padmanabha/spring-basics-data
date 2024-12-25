@@ -14,8 +14,7 @@ public class EmployeeDepartmentMapper {
 		
 		EmployeeDto empDto = new EmployeeDto(x.getEmpId(), 
 				x.getEmpName(), x.getJob(), x.getManager(), 
-				x.getHireDate(),x.getSalary(), x.getCommission(),
-				null);
+				x.getHireDate(),x.getSalary(), x.getCommission(),x.getDepartment().getDepartmentNo());
 		return empDto;
 	}
 	public static DepartmentDto convertToDtoDepartment(Department dept) {
@@ -41,10 +40,23 @@ public class EmployeeDepartmentMapper {
 		EmployeeDto empDto = new EmployeeDto(x.getEmpId(), 
 				x.getEmpName(), x.getJob(), x.getManager(), 
 				x.getHireDate(),x.getSalary(), x.getCommission(),
-				convertToOnlyDtoDepartment(x.getDepartment()));
+				x.getDepartment().getDepartmentNo()
+				);
 		return empDto;
 	}
-	
-	
+
+	public static Employee convertToEmployeeEntity(EmployeeDto dto){
+		Employee emp = new Employee();
+
+		emp.setEmpId(dto.empId());
+		emp.setEmpName(dto.empName());
+		emp.setCommission(dto.commission());
+		emp.setManager(dto.manager());
+		emp.setSalary(dto.salary());
+		emp.setHireDate(dto.hireDate());
+		emp.setJob(dto.job());
+
+		return emp;
+	}
 	
 }

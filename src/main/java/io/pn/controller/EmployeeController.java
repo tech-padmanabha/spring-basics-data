@@ -15,12 +15,18 @@ import io.pn.service.EmployeeService;
 @AllArgsConstructor
 @RestController
 @RequestMapping("/emp")
-@CrossOrigin("*")
+//@CrossOrigin("*")
 public class EmployeeController {
 	
 	//@Autowired
 	// if we use @AllArgsConstructor then we no need to autowired
 	private EmployeeService empService;
+
+	@PostMapping("/add-emp")
+	public ResponseEntity<EmployeeDto> addEmployee(EmployeeDto employeeDto){
+		EmployeeDto empDto = empService.saveEmployee(employeeDto);
+		return ResponseEntity.ok(empDto);
+	}
 
 	@GetMapping(path = "{empNo}")
 	public ResponseEntity<EmployeeDto> searchEmployeeByEmpno(@PathVariable Integer empNo){

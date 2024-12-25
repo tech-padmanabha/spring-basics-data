@@ -5,7 +5,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.pn.entity.Department;
 import io.pn.exception.ResourceNotFoundException;
+import io.pn.repository.DepartmentRepository;
 import io.pn.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +23,18 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Autowired
 	private EmployeeRepository empRepo;
+
+	@Autowired
+	private DepartmentRepository departmentRepository;
+
+	public EmployeeDto saveEmployee(EmployeeDto employeeDto){
+		Department department =  departmentRepository.findById(employeeDto.deptNo())
+				.orElseThrow(()->  new ResourceNotFoundException("Department not available"));
+		Employee emp = EmployeeDepartmentMapper.convertToEmployeeEntity(employeeDto);
+		emp.setDepartment(department);
+		Employee savedEmp  = empRepo.save(emp);
+		return EmployeeDepartmentMapper.convertToDtoEmployee(savedEmp);
+	}
 
 	public EmployeeDto getEmployeeById(Integer empNo){
 		Employee empData = empRepo.getByEmpId(empNo)

@@ -1,6 +1,6 @@
 package io.pn.service.impls;
 
-import java.util.Optional;
+import java.lang.module.ResolutionException;
 import java.util.UUID;
 
 import io.pn.service.UserService;
@@ -28,11 +28,8 @@ public class UserServiceImpl implements UserService {
 	public UsersResponseDto searchByUserId(String uuid) {
 		UsersResponseDto userDto = null;
 		UUID fromData = UUID.fromString(uuid);
-		Optional<Users> user = usersRepo.findByUserIdAllIgnoreCase(fromData);
-		if(user.isPresent()) {
-			Users users = user.get();
-			userDto = convertToDto(users);
-		}
+		Users users = usersRepo.findByUserIdAllIgnoreCase(fromData).orElseThrow(()-> new ResolutionException("User Not available"));
+		userDto = convertToDto(users);
 		return userDto;
 	}
 	
