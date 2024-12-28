@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import io.pn.dto.EmployeeDto;
+import org.springframework.data.domain.Page;
 
 public interface EmployeeService {
 	public EmployeeDto saveEmployee(EmployeeDto employeeDto);
@@ -20,4 +21,5 @@ public interface EmployeeService {
 	void deleteByEmpName(String empName);
 	List<EmployeeDto> queryByJobIgnoreCase(String job);
 	long countByJob(String job);
+	public Page<EmployeeDto> getAllEmployeeByPagination(int pageSize, int pageNumber, String sortBy);
 }

@@ -4,12 +4,17 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 
 import io.pn.entity.Department;
 import io.pn.exception.ResourceNotFoundException;
 import io.pn.repository.DepartmentRepository;
 import io.pn.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.convert.converter.Converter;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import io.pn.dto.EmployeeDto;
@@ -26,6 +31,23 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Autowired
 	private DepartmentRepository departmentRepository;
+
+	public Page<EmployeeDto> getAllEmployeeByPagination(int pageSize,int pageNumber,String sortBy){
+		Pageable pageable = Pageable.ofSize(pageSize).withPage(pageNumber);
+		Sort sort = Sort.by(Sort.Order.desc(sortBy));
+		pageable.getSortOr(sort);
+		Page<Employee> empPage = empRepo.findAll(pageable);
+		if(empPage.isEmpty()){
+			throw new ResourceNotFoundException("Employee Page Data not Available");
+		}
+		Page<EmployeeDto> empPageDto = empPage.map(new Function<Employee, EmployeeDto>() {
+			@Override
+			public EmployeeDto apply(Employee employee) {
+				return EmployeeDepartmentMapper.convertToDtoEmployee(employee);
+			}
+		});
+		return empPageDto;
+	}
 
 	public EmployeeDto saveEmployee(EmployeeDto employeeDto){
 		Department department =  departmentRepository.findById(employeeDto.deptNo())

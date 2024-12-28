@@ -6,6 +6,7 @@ import java.util.List;
 
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,9 +24,15 @@ public class EmployeeController {
 	private EmployeeService empService;
 
 	@PostMapping("/add-emp")
-	public ResponseEntity<EmployeeDto> addEmployee(EmployeeDto employeeDto){
+	public ResponseEntity<EmployeeDto> addEmployee(@RequestBody EmployeeDto employeeDto){
 		EmployeeDto empDto = empService.saveEmployee(employeeDto);
 		return ResponseEntity.ok(empDto);
+	}
+
+	@GetMapping("/emp-page")
+	public ResponseEntity<Page<EmployeeDto>> getAllEmployeePage(@RequestParam int pageSize,@RequestParam int pageNumber,@RequestParam(defaultValue = "empNo") String sortBy){
+		Page<EmployeeDto> emppage = empService.getAllEmployeeByPagination(pageSize,pageNumber,sortBy);
+		return ResponseEntity.ok(emppage);
 	}
 
 	@GetMapping(path = "{empNo}")

@@ -1,5 +1,6 @@
 package io.pn.dto;
 
+import java.net.URI;
 import java.time.LocalDateTime;
 import java.util.List;
 
