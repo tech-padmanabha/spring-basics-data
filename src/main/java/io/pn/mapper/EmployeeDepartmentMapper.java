@@ -25,13 +25,13 @@ public class EmployeeDepartmentMapper {
 			empDto.add(convertToDtoEmployee(x));
 		}
 		DepartmentDto deptDto = new DepartmentDto(dept.getDepartmentNo(),
-					dept.getDepartmentName(), dept.getLocation(), empDto);
+					dept.getDepartmentName(), dept.getLocation());
 		
 		return deptDto;
 	}
 	
 	public static DepartmentDto convertToOnlyDtoDepartment(Department dept) {
-		DepartmentDto dto = new DepartmentDto(dept.getDepartmentNo(), dept.getDepartmentName(), dept.getLocation(), null);
+		DepartmentDto dto = new DepartmentDto(dept.getDepartmentNo(), dept.getDepartmentName(), dept.getLocation());
 		return dto;
 	}
 	

@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import io.pn.exception.ResourceNotFoundException;
 import io.pn.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,11 +24,14 @@ public class DepartmentServiceImpl implements DepartmentService {
 	
 	public Set<DepartmentDto> getDepartment(){		
 		List<Department> all = deptRepo.findAll();
-		Set<DepartmentDto> deptDto = new HashSet<>();	
+		Set<DepartmentDto> deptDto = new HashSet<>();
+		if(all.isEmpty()){
+			throw new ResourceNotFoundException("Department not available");
+		}
 		for(Department dept: all) {
 			deptDto.add(EmployeeDepartmentMapper.convertToDtoDepartment(dept));
-		}		
-		
+		}
+
 		return deptDto;
 	}
 

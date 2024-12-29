@@ -8,4 +8,5 @@ import io.pn.dto.DepartmentDto;
 public interface DepartmentService {
 	Set<DepartmentDto> getDepartment();
 	List<DepartmentDto> searchByLocation(String location);
+
 }

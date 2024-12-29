@@ -19,14 +19,13 @@ public class DepartmentController {
 	@Autowired
 	private DepartmentService service;
 	
-	@GetMapping("/get-all")
+	@GetMapping("/all")
 	public Set<DepartmentDto> getDepartment(){
 		Set<DepartmentDto> sets = service.getDepartment();
-		
 		return sets;
 	}
 	
-	@GetMapping("/get-by-location/{location}")
+	@GetMapping("/location/{location}")
 	public List<DepartmentDto> searchByLocation(@PathVariable String location){
 		List<DepartmentDto> searchByLocation = service.searchByLocation(location);
 		return searchByLocation;

@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import io.pn.dto.EmployeeDto;
@@ -24,7 +25,7 @@ public class EmployeeController {
 	private EmployeeService empService;
 
 	@PostMapping("/add-emp")
-	public ResponseEntity<EmployeeDto> addEmployee(@RequestBody EmployeeDto employeeDto){
+	public ResponseEntity<EmployeeDto> addEmployee(@Validated @RequestBody EmployeeDto employeeDto){
 		EmployeeDto empDto = empService.saveEmployee(employeeDto);
 		return ResponseEntity.ok(empDto);
 	}
