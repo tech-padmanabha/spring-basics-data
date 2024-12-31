@@ -1,6 +1,7 @@
 package io.pn.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -41,7 +42,7 @@ public class UsersController {
 		}
 	)
 	@GetMapping("/get")
-	public UsersResponseDto findById(@RequestParam String id) {
+	public UsersResponseDto findById(@Parameter(required = true) @RequestParam String id) {
 		
 		return userService.searchByUserId(id);
 	}
