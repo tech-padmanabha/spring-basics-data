@@ -16,7 +16,7 @@ public class BookLog {
     private String isbn;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "book_id",referencedColumnName = "id")
+    @JoinColumn(name = "book_picture_id",referencedColumnName = "id")
     private BookPicture bookPicture;
 
     @OneToOne(mappedBy = "bookLog")

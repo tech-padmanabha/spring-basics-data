@@ -60,6 +60,6 @@ public class ReportHandler {
                 dataToPrint.put(i,ExcelDatBoMapper.mapToStringList(result.get(i)));
             }
         }
-        writeExcel.writeExcel("SomeData",headerList,dataToPrint,outputStream);
+        writeExcel.writeExcel("Legendary List",headerList,dataToPrint,outputStream);
     }
 }

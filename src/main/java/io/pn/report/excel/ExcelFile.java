@@ -44,6 +44,7 @@ public class ExcelFile implements ReadExcel,WriteExcel{
         return data;
     }
 
+    // we can represent in generic we will do in next part
     @Override
     public byte[] writeExcel(String heading, List<String> headerList, Map<Integer,List<String>> databody, OutputStream outputStream) throws IOException {
 
@@ -76,7 +77,7 @@ public class ExcelFile implements ReadExcel,WriteExcel{
 
         CellStyle headerStyle = BaseExcel.setHeaderStyle(workbook);
         headerStyle.setAlignment(HorizontalAlignment.CENTER);
-        headerStyle.setVerticalAlignment(VerticalAlignment.JUSTIFY);
+        headerStyle.setVerticalAlignment(VerticalAlignment.CENTER);
 
         for(int i=0;i<headerList.size();i++){
             Cell headerCell = header.createCell(i);
@@ -84,7 +85,7 @@ public class ExcelFile implements ReadExcel,WriteExcel{
             headerCell.setCellStyle(headerStyle);
 
         }
-        startingPoints+=2;
+        startingPoints+=1;
 
         CellStyle cellStyle = BaseExcel.setDataStyle(workbook);
       //  cellStyle.setWrapText(true);;
@@ -95,6 +96,7 @@ public class ExcelFile implements ReadExcel,WriteExcel{
             Row row = sheet.createRow(startingPoints);
             for(int i=0;i<body.size();i++){
                 Cell cell = row.createCell(i);
+                // here we can provide directly the string,number and boolean values replacement of only String
                 cell.setCellValue(body.get(i));
                 cell.setCellStyle(cellStyle);
             }

@@ -24,6 +24,6 @@ public class Courses {
 	private List<Teachers> teachers;
 
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "backlog_id",referencedColumnName = "id")
+	@JoinColumn(name = "booklog_id",referencedColumnName = "id")
 	private BookLog bookLog;
 }
