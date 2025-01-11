@@ -74,16 +74,18 @@ public class ExcelFile implements ReadExcel,WriteExcel{
         }
 
         Row header = sheet.createRow(startingPoints);
-
+        // adjust the height of the cell
+        header.setHeightInPoints(30);
         CellStyle headerStyle = BaseExcel.setHeaderStyle(workbook);
         headerStyle.setAlignment(HorizontalAlignment.CENTER);
         headerStyle.setVerticalAlignment(VerticalAlignment.CENTER);
 
+        // we can apply the filters (provide source and destination from where to where you want to apply the filters)
+        sheet.setAutoFilter(new CellRangeAddress(startingPoints,startingPoints,0,headerList.size()-1));
         for(int i=0;i<headerList.size();i++){
             Cell headerCell = header.createCell(i);
             headerCell.setCellValue(headerList.get(i));
             headerCell.setCellStyle(headerStyle);
-
         }
         startingPoints+=1;
 
@@ -98,6 +100,8 @@ public class ExcelFile implements ReadExcel,WriteExcel{
             row.setHeightInPoints(40); // Adjust row height
 
             for(int i=0;i<body.size();i++){
+                //it won't reflect
+                // sheet.autoSizeColumn(i);
                 Cell cell = row.createCell(i);
                 // Adjust column width
                 sheet.setColumnWidth(i, 20 * 256);
@@ -112,6 +116,5 @@ public class ExcelFile implements ReadExcel,WriteExcel{
         workbook.close();
         return new byte[0];
     }
-
 
 }

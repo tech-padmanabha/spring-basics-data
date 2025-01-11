@@ -16,16 +16,17 @@ public class BaseExcel {
         font.setFontName("Arial");
         font.setFontHeightInPoints((short) 12);
         font.setBold(true);
+        font.setColor(IndexedColors.WHITE1.getIndex());
         headerStyle.setFont(font);
         return headerStyle;
     }
     public static CellStyle setHeadIngStyle(Workbook workbook){
         CellStyle headerStyle = workbook.createCellStyle();
-        headerStyle.setFillForegroundColor(IndexedColors.LIGHT_BLUE.getIndex());
-        headerStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+        headerStyle.setFillForegroundColor(IndexedColors.AQUA.getIndex());
+        headerStyle.setFillPattern(FillPatternType.DIAMONDS);
 
         XSSFFont font = ((XSSFWorkbook) workbook).createFont();
-        font.setFontName("Arial");
+        font.setFontName("Algerian");
         font.setFontHeightInPoints((short) 30);
         font.setBold(true);
         headerStyle.setFont(font);
@@ -36,6 +37,11 @@ public class BaseExcel {
         CellStyle dataStyle = workbook.createCellStyle();
         dataStyle.setVerticalAlignment(VerticalAlignment.CENTER);
         dataStyle.setAlignment(HorizontalAlignment.CENTER);
+        // wrap text to true
+        dataStyle.setWrapText(true);
+        XSSFFont font = ((XSSFWorkbook) workbook).createFont();
+        font.setFontName("Consolas");
+        dataStyle.setFont(font);
         applyBoarders(dataStyle);
         return dataStyle;
     }
