@@ -67,7 +67,7 @@ public class ExcelFile implements ReadExcel,WriteExcel{
             CellStyle headingStyle = BaseExcel.setHeadIngStyle(workbook);
             headingStyle.setAlignment(HorizontalAlignment.CENTER);
             headingStyle.setVerticalAlignment(VerticalAlignment.CENTER);
-            // Merge the header cell across the columns (e.g., 3 columns)
+            // Merge the header cell across the columns (e.g., length columns)
             sheet.addMergedRegion(new CellRangeAddress(0, 3, startingPoints, (headerList.size()-1))); // Merging from row
             headerCell.setCellStyle(headingStyle);
             startingPoints+=4;
@@ -93,9 +93,14 @@ public class ExcelFile implements ReadExcel,WriteExcel{
 
         for (Integer key:keyData){
             List<String> body = databody.get(key);
+
             Row row = sheet.createRow(startingPoints);
+            row.setHeightInPoints(40); // Adjust row height
+
             for(int i=0;i<body.size();i++){
                 Cell cell = row.createCell(i);
+                // Adjust column width
+                sheet.setColumnWidth(i, 20 * 256);
                 // here we can provide directly the string,number and boolean values replacement of only String
                 cell.setCellValue(body.get(i));
                 cell.setCellStyle(cellStyle);

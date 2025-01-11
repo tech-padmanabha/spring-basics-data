@@ -35,6 +35,7 @@ public class BaseExcel {
     public static CellStyle setDataStyle(Workbook workbook){
         CellStyle dataStyle = workbook.createCellStyle();
         dataStyle.setVerticalAlignment(VerticalAlignment.CENTER);
+        dataStyle.setAlignment(HorizontalAlignment.CENTER);
         applyBoarders(dataStyle);
         return dataStyle;
     }
