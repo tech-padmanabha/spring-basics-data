@@ -103,15 +103,22 @@ public class ExcelFile implements ReadExcel,WriteExcel{
                 //it won't reflect
                 // sheet.autoSizeColumn(i);
                 Cell cell = row.createCell(i);
-                // Adjust column width
-                sheet.setColumnWidth(i, 20 * 256);
                 // here we can provide directly the string,number and boolean values replacement of only String
+                // we can use DataTypeUtils.java class available
                 cell.setCellValue(body.get(i));
                 cell.setCellStyle(cellStyle);
             }
             startingPoints++;
         }
-
+        // AutoSize should be after representing the data we should use the autoSize the columns
+        // Auto-size the columns based on their content
+        for (int i = 0; i < headerList.size(); i++) {
+            sheet.autoSizeColumn(i);
+            // Set a minimum width to ensure visibility
+            if (sheet.getColumnWidth(i) < 256 * 10) { // Minimum width of 10 characters
+                sheet.setColumnWidth(i, 256 * 10);
+            }
+        }
         workbook.write(outputStream);
         workbook.close();
         return new byte[0];
