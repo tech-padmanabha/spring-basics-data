@@ -18,6 +18,8 @@ public class Courses {
 	@ElementCollection
 	@JoinTable(name = "teaching_timings"
 			   ,joinColumns =@JoinColumn(name="id") )
+	@OrderColumn(name = "timing_slot")
+	@Column(name = "timing")
 	private List<LocalTime> timings;
 	
 	@ManyToMany(mappedBy = "courses",cascade = CascadeType.ALL)
