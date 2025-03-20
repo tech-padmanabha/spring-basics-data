@@ -72,8 +72,9 @@ public class SingleJeep extends SingleEngine {
 - *@DiscriminatorValue* A unique value that describes a given subclass. Default to `class` name.
 
 
-[!NOTE]
-Write the Test case for these program and see the result
+> [!NOTE]
+> Write the Test case for these program and see the result
+
 ## Table per Class
 * It creates per class one table.
 
@@ -118,7 +119,9 @@ public class PerClassJeep extends PerClassEngine {
     private String color;
 }
 ```
-[!NOTE ] When `InheritanceType.TABLE_PER_CLASS `then ID generator should be `GenerationType.TABLE`. It Generates the ID in thread safe manner.
+
+> [!NOTE]
+> When `InheritanceType.TABLE_PER_CLASS `then ID generator should be `GenerationType.TABLE`. It Generates the ID in thread safe manner.
 ## Joined Table
 * For the Inheritance table tree, all `classes` are mapped to a `table`.
 * Superclass table contains fields common to all subclasses
@@ -161,7 +164,8 @@ public class JoinedJeep extends JoinedEngine {
     private String color;
 }
 ```
-Note: It Joins with subclass tables only. strategy should be `GenerationType.IDENTITY`.
+> [!NOTE]
+> It Joins with subclass tables only. strategy should be `GenerationType.IDENTITY`.
 
 ## Mapped superclass
 * For the inheritance tree. subclass is mapped to a `table`.
@@ -210,8 +214,8 @@ public class Jeep extends Engine {
     private String color;
 }
 ```
-[!NOTE]
-Based on the requirement you can choose among them.
+> [!NOTE]
+> Based on the requirement you can choose among them.
 4th method is `preferable`.
 
 ### Guidance
