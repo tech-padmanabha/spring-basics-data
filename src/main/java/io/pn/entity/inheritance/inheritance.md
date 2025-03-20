@@ -27,13 +27,6 @@ public abstract class SingleEngine {
 ```
 SingleBike.java
 ```java
-package io.pn.entity.inheritance.singletable;
-
-import jakarta.persistence.DiscriminatorValue;
-import jakarta.persistence.Entity;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
@@ -49,13 +42,6 @@ public class SingleBike extends SingleEngine{
 ```
 SingleJeep.java
 ```Java
-package io.pn.entity.inheritance.singletable;
-
-import jakarta.persistence.DiscriminatorValue;
-import jakarta.persistence.Entity;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
